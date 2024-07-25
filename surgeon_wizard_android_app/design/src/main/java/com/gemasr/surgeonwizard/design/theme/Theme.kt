@@ -1,4 +1,4 @@
-package com.gemasr.surgeonwizard.ui.theme
+package com.gemasr.surgeonwizard.design.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

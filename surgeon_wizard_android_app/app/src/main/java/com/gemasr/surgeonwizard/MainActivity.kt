@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.gemasr.surgeonwizard.ui.theme.SurgeonWizardTheme
+import com.gemasr.surgeonwizard.design.theme.SurgeonWizardTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    SurgeonWizardTheme {
+    com.gemasr.surgeonwizard.design.theme.SurgeonWizardTheme {
         Greeting("Android")
     }
 }
