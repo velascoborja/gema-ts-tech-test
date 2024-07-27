@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+apply(from = "${rootProject.rootDir}/buildtools/common_configurations.gradle.kts")
+
 android {
     namespace = "com.gemasr.surgeonwizard.data"
     compileSdk = 34
@@ -14,6 +16,10 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -21,13 +27,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            //TODO change this for the production base URL
+            buildConfigField("String", "BASE_URL", "\"https://staging.touchsurgery.com\"")
         }
         debug {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            buildConfigField("String", "BASE_URL", "\"https://staging.touchsurgery.com\"")
         }
     }
     compileOptions {
