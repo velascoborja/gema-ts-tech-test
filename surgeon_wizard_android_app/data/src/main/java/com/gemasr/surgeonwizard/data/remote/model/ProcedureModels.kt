@@ -32,10 +32,7 @@ data class ProcedureDetailApiModel(
     val name: String,
 
     @SerializedName("phases")
-    val phases: List<Phase>,
-
-    @SerializedName("icon")
-    val icon: IconApiModel,
+    val phases: List<PhaseApiModel>,
 
     @SerializedName("card")
     val card: CardApiModel,
@@ -47,15 +44,15 @@ data class ProcedureDetailApiModel(
     val duration: Int
 )
 
-data class Phase(
+data class PhaseApiModel(
 
-    @SerializedName("date_published")
+    @SerializedName("uuid")
     val uuid: String,
 
-    @SerializedName("date_published")
+    @SerializedName("name")
     val name: String,
 
-    @SerializedName("date_published")
+    @SerializedName("icon")
     val icon: IconApiModel
 )
 

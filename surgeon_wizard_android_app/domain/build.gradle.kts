@@ -3,8 +3,6 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
-apply(from = "${rootProject.rootDir}/buildtools/common_configurations.gradle.kts")
-
 android {
     namespace = "com.gemasr.surgeonwizard.domain"
     compileSdk = 34
@@ -43,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
