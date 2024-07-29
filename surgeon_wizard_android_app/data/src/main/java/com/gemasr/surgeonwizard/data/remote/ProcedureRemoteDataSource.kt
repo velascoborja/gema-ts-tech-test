@@ -4,10 +4,11 @@ import com.gemasr.surgeonwizard.data.remote.model.ProcedureDetailApiModel
 import com.gemasr.surgeonwizard.data.remote.model.ProcedureListItemApiModel
 import javax.inject.Inject
 
-class ProcedureRemoteDataSource @Inject constructor(
-    private val procedureApi: ProcedureApi
+class ProcedureRemoteDataSource
+@Inject
+constructor(
+    private val procedureApi: ProcedureApi,
 ) {
-
     suspend fun getProceduresList(): List<ProcedureListItemApiModel> {
         return procedureApi.getProcedures()
     }

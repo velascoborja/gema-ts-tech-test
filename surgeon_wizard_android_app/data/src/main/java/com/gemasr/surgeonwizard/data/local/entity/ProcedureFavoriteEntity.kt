@@ -6,5 +6,5 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "procedure_favorites")
 data class ProcedureFavoriteEntity(
     @PrimaryKey val procedureId: String,
-    val isFavorite: Boolean
+    val isFavorite: Boolean,
 )

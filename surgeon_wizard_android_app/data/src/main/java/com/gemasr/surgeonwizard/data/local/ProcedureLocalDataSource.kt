@@ -8,10 +8,11 @@ import com.gemasr.surgeonwizard.data.local.entity.ProcedureFavoriteEntity
 import com.gemasr.surgeonwizard.data.local.entity.ProcedureWithFavorite
 import javax.inject.Inject
 
-class ProcedureLocalDataSource @Inject constructor(
+class ProcedureLocalDataSource
+@Inject
+constructor(
     private val procedureDao: ProcedureDao,
 ) {
-
     companion object {
         private const val CACHE_TIMEOUT_MS = 24 * 60 * 60 * 1000
     }
@@ -20,6 +21,12 @@ class ProcedureLocalDataSource @Inject constructor(
         emptyList()
     } else {
         procedureDao.getAllProceduresWithFavorites()
+    }
+
+    suspend fun getFavoriteProcedures(): Pair<Boolean, List<ProcedureWithFavorite>> = if (shouldUpdateProcedures()) {
+        true to emptyList()
+    } else {
+        false to procedureDao.getAllFavoriteProcedures()
     }
 
     suspend fun getProcedureDetail(id: String): ProcedureDetailWithFavorite? = if (shouldUpdateProcedures()) {

@@ -6,7 +6,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class Converters {
-
     @TypeConverter
     fun fromPhaseList(value: List<Phase>): String {
         return Gson().toJson(value)

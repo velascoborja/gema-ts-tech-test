@@ -1,0 +1,21 @@
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 4
+indent_style = space
+insert_final_newline = false
+max_line_length = 140
+tab_width = 4
+ij_continuation_indent_size = 8
+ij_visual_guides = 140
+
+[{*.kt,*.kts}]
+ktlint_code_style = android_studio
+ij_kotlin_allow_trailing_comma_on_call_site = true
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_continuation_indent_size = 8
+ij_kotlin_space_before_extend_colon = true
+ktlint_function_naming_ignore_when_annotated_with=Composable
+
+[*.xml]
+ij_xml_continuation_indent_size = 4

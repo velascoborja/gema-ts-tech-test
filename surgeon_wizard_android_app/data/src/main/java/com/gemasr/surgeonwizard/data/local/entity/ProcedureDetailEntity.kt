@@ -13,10 +13,10 @@ data class ProcedureDetailEntity(
     @ColumnInfo(name = "cardUrl") val cardUrl: String,
     @ColumnInfo(name = "phases") val phases: String,
     @ColumnInfo(name = "datePublished") val datePublished: String,
-    @ColumnInfo(name = "duration") val duration: Int
+    @ColumnInfo(name = "duration") val duration: Int,
 )
 
 data class ProcedureDetailWithFavorite(
     @Embedded val procedureDetail: ProcedureDetailEntity,
-    @ColumnInfo(name = "isFavorite") val isFavorite: Boolean
+    @ColumnInfo(name = "isFavorite") val isFavorite: Boolean,
 )

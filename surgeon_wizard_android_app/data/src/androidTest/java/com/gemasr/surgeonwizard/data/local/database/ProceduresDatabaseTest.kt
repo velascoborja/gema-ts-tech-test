@@ -8,6 +8,7 @@ import com.gemasr.surgeonwizard.data.local.entity.ProcedureEntity
 import com.gemasr.surgeonwizard.data.local.entity.ProcedureFavoriteEntity
 import org.junit.After
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -16,8 +17,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ProcedureDaoTest {
-
+class ProceduresDatabaseTest {
     private lateinit var database: AppDatabase
     private lateinit var dao: ProcedureDao
 
@@ -80,10 +80,11 @@ class ProcedureDaoTest {
     @Test
     fun givenProceduresList_whenInsertProcedures_thenAllProceduresAreInserted() {
         // Given
-        val procedures = listOf(
-            ProcedureEntity("1", "Procedure 1", "icon1", 3, 60, 1000L),
-            ProcedureEntity("2", "Procedure 2", "icon2", 2, 30, 2000L)
-        )
+        val procedures =
+            listOf(
+                ProcedureEntity("1", "Procedure 1", "icon1", 3, 60, 1000L),
+                ProcedureEntity("2", "Procedure 2", "icon2", 2, 30, 2000L),
+            )
 
         // When
         dao.insertProcedures(procedures)
@@ -143,10 +144,11 @@ class ProcedureDaoTest {
     @Test
     fun givenProceduresWithDifferentDates_whenGetProceduresLastUpdated_thenReturnMostRecentDate() {
         // Given
-        val procedures = listOf(
-            ProcedureEntity("1", "Procedure 1", "icon1", 3, 60, 1000L),
-            ProcedureEntity("2", "Procedure 2", "icon2", 2, 30, 2000L)
-        )
+        val procedures =
+            listOf(
+                ProcedureEntity("1", "Procedure 1", "icon1", 3, 60, 1000L),
+                ProcedureEntity("2", "Procedure 2", "icon2", 2, 30, 2000L),
+            )
         dao.insertProcedures(procedures)
 
         // When
@@ -154,5 +156,28 @@ class ProcedureDaoTest {
 
         // Then
         assertEquals(2000L, result)
+    }
+
+    @Test
+    fun givenProceduresWithFavorites_whenGetAllFavoriteProcedures_thenReturnOnlyFavorites() {
+        // Given
+        val procedure1 = ProcedureEntity("1", "Procedure 1", "icon1", 3, 60, 1000L)
+        val procedure2 = ProcedureEntity("2", "Procedure 2", "icon2", 2, 30, 2000L)
+        val procedure3 = ProcedureEntity("3", "Procedure 3", "icon3", 4, 45, 3000L)
+        dao.insertProcedures(listOf(procedure1, procedure2, procedure3))
+
+        // Set procedures 1 and 3 as favorites
+        dao.insertOrUpdateFavorite(ProcedureFavoriteEntity("1", true))
+        dao.insertOrUpdateFavorite(ProcedureFavoriteEntity("3", true))
+
+        // When
+        val result = dao.getAllFavoriteProcedures()
+
+        // Then
+        assertEquals(2, result.size)
+        assertTrue(result.all { it.isFavorite })
+        assertTrue(result.any { it.procedure.uuid == "1" && it.procedure.name == "Procedure 1" })
+        assertTrue(result.any { it.procedure.uuid == "3" && it.procedure.name == "Procedure 3" })
+        assertFalse(result.any { it.procedure.uuid == "2" })
     }
 }

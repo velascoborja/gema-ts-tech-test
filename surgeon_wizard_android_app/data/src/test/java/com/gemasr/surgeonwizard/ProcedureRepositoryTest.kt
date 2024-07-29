@@ -16,7 +16,6 @@ import org.junit.Before
 import org.junit.Test
 
 class ProcedureRepositoryTest {
-
     private lateinit var repository: ProcedureRepository
     private lateinit var localDataSource: ProcedureLocalDataSource
     private lateinit var remoteDataSource: ProcedureRemoteDataSource
@@ -115,6 +114,97 @@ class ProcedureRepositoryTest {
     }
 
     @Test
+    fun `given exception occurs when getAllProcedures then return failure`() = runBlocking {
+        // Given
+        coEvery { localDataSource.getAllProcedures() } throws Exception("Test exception")
+
+        // When
+        val result = repository.getAllProcedures()
+
+        // Then
+        assertTrue(result.isFailure)
+        assertTrue(result.exceptionOrNull() is Exception)
+        assertEquals("Test exception", result.exceptionOrNull()?.message)
+    }
+
+    @Test
+    fun `given local favorite data available when getFavoriteProcedures then return local data`() = runBlocking {
+        // Given
+        val localFavoriteProcedures = listOf(ProceduresFabricator.createProcedureWithFavorite(isFavorite = true))
+        val expectedFavoriteProcedureItems = listOf(ProceduresFabricator.createProcedureItem(isFavorite = true))
+
+        coEvery { localDataSource.getFavoriteProcedures() } returns Pair(false, localFavoriteProcedures)
+
+        // When
+        val result = repository.getFavoriteProcedures()
+
+        // Then
+        assertTrue(result.isSuccess)
+        assertEquals(expectedFavoriteProcedureItems.size, result.getOrNull()?.size)
+        assertEquals(expectedFavoriteProcedureItems.first().id, result.getOrNull()?.first()?.id)
+        assertTrue(result.getOrNull()?.first()?.isFavorite == true)
+        coVerify(exactly = 1) { localDataSource.getFavoriteProcedures() }
+        coVerify(exactly = 0) { remoteDataSource.getProceduresList() }
+    }
+
+    @Test
+    fun `given empty local favorite data and shouldUpdate true when getFavoriteProcedures then update and return data`() = runBlocking {
+        // Given
+        val remoteProcedures = listOf(ProceduresFabricator.createProcedureListItemApiModel())
+        val localFavoriteProcedures = listOf(ProceduresFabricator.createProcedureWithFavorite(isFavorite = true))
+        val expectedFavoriteProcedureItems = listOf(ProceduresFabricator.createProcedureItem(isFavorite = true))
+
+        coEvery { localDataSource.getFavoriteProcedures() } returnsMany
+            listOf(
+                Pair(true, emptyList()),
+                Pair(false, localFavoriteProcedures),
+            )
+        coEvery { remoteDataSource.getProceduresList() } returns remoteProcedures
+        coEvery { localDataSource.insertProcedures(any()) } just Runs
+
+        // When
+        val result = repository.getFavoriteProcedures()
+
+        // Then
+        assertTrue(result.isSuccess)
+        assertEquals(expectedFavoriteProcedureItems.size, result.getOrNull()?.size)
+        assertEquals(expectedFavoriteProcedureItems.first().id, result.getOrNull()?.first()?.id)
+        assertTrue(result.getOrNull()?.first()?.isFavorite == true)
+        coVerify(exactly = 2) { localDataSource.getFavoriteProcedures() }
+        coVerify(exactly = 1) { remoteDataSource.getProceduresList() }
+        coVerify(exactly = 1) { localDataSource.insertProcedures(any()) }
+    }
+
+    @Test
+    fun `given empty local favorite data and shouldUpdate false when getFavoriteProcedures then return empty list`() = runBlocking {
+        // Given
+        coEvery { localDataSource.getFavoriteProcedures() } returns Pair(false, emptyList())
+
+        // When
+        val result = repository.getFavoriteProcedures()
+
+        // Then
+        assertTrue(result.isSuccess)
+        assertTrue(result.getOrNull()?.isEmpty() == true)
+        coVerify(exactly = 1) { localDataSource.getFavoriteProcedures() }
+        coVerify(exactly = 0) { remoteDataSource.getProceduresList() }
+    }
+
+    @Test
+    fun `given exception occurs when getFavoriteProcedures then return failure`() = runBlocking {
+        // Given
+        coEvery { localDataSource.getFavoriteProcedures() } throws Exception("Test exception")
+
+        // When
+        val result = repository.getFavoriteProcedures()
+
+        // Then
+        assertTrue(result.isFailure)
+        assertTrue(result.exceptionOrNull() is Exception)
+        assertEquals("Test exception", result.exceptionOrNull()?.message)
+    }
+
+    @Test
     fun `given procedure id and favorite status when setFavorite then update local data source`() = runBlocking {
         // Given
         val id = "123"
@@ -126,5 +216,20 @@ class ProcedureRepositoryTest {
 
         // Then
         coVerify(exactly = 1) { localDataSource.setFavorite(id, isFavorite) }
+    }
+
+    @Test
+    fun `given exception occurs when getProcedureDetail then return failure`() = runBlocking {
+        // Given
+        val id = "123"
+        coEvery { localDataSource.getProcedureDetail(id) } throws Exception("Test exception")
+
+        // When
+        val result = repository.getProcedureDetail(id)
+
+        // Then
+        assertTrue(result.isFailure)
+        assertTrue(result.exceptionOrNull() is Exception)
+        assertEquals("Test exception", result.exceptionOrNull()?.message)
     }
 }

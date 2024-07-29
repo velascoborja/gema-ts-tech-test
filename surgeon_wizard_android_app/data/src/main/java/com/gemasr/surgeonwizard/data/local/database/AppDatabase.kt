@@ -11,9 +11,9 @@ import com.gemasr.surgeonwizard.data.local.entity.ProcedureFavoriteEntity
     entities = [
         ProcedureEntity::class,
         ProcedureDetailEntity::class,
-        ProcedureFavoriteEntity::class
+        ProcedureFavoriteEntity::class,
     ],
-    version = 1
+    version = 1,
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {

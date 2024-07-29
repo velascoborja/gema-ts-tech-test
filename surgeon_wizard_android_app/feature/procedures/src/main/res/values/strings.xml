@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="procedure_image_content_description">Procedure Image</string>
+    <string name="favorite_button_content_description">Favorite</string>
+    <string name="duration_format">Duration: %1$d minutes</string>
+    <string name="created_format">Created: %1$s</string>
+    <string name="phases_title">Phases</string>
+    <string name="phase_thumbnail_content_description">Phase Thumbnail</string>
+    <string name="favorite_added">Added to favorites</string>
+    <string name="favorite_removed">Removed from favorites</string>
+    <string name="favorite_error">Error modifying favorite state</string>
+    <string name="favorite_empty">You have no favorites yet. Add some procedures!</string>
+    <string name="retry_button_text">Retry</string>
+    <string name="network_error_message">Please make sure that you have Internet connection</string>
+    <string name="server_error_message">Oh! So empty! We couldn´t find any procedure. Please retry</string>
+    <string name="detail_not_found_message">Procedure detail not available</string>
+    <string name="unknown_error_message">Unknown error</string>
+</resources>

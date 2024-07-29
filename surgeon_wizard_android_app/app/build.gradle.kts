@@ -31,9 +31,9 @@ android {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
-            //TODO change this for the production base URL
+            // TODO change this for the production base URL
             buildConfigField("String", "BASE_URL", "\"https://staging.touchsurgery.com\"")
         }
         debug {
@@ -64,6 +64,11 @@ android {
 dependencies {
 
     implementation(project(":design"))
+    implementation(project(":core"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":feature:procedures"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -73,8 +78,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.compose)
+
     kapt(libs.hilt.compiler)
+
     testImplementation(libs.junit)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

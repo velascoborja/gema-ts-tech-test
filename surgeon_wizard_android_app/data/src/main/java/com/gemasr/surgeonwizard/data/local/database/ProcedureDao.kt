@@ -12,21 +12,35 @@ import com.gemasr.surgeonwizard.data.local.entity.ProcedureWithFavorite
 
 @Dao
 interface ProcedureDao {
-
-    @Query("""
+    @Query(
+        """
         SELECT p.uuid as uuid, p.name as name, p.iconUrl as iconUrl, p.phaseCount as phaseCount, p.duration as duration, p.lastUpdated as lastUpdated, 
                COALESCE(f.isFavorite, 0) as isFavorite
         FROM procedures p
         LEFT JOIN procedure_favorites f ON p.uuid = f.procedureId
-    """)
+    """,
+    )
     fun getAllProceduresWithFavorites(): List<ProcedureWithFavorite>
 
-    @Query("""
+    @Query(
+        """
+        SELECT p.uuid as uuid, p.name as name, p.iconUrl as iconUrl, p.phaseCount as phaseCount, p.duration as duration, p.lastUpdated as lastUpdated, 
+               COALESCE(f.isFavorite, 0) as isFavorite
+        FROM procedures p
+        LEFT JOIN procedure_favorites f ON p.uuid = f.procedureId
+        WHERE isFavorite = 1
+    """,
+    )
+    fun getAllFavoriteProcedures(): List<ProcedureWithFavorite>
+
+    @Query(
+        """
         SELECT pd.*, COALESCE(f.isFavorite, 0) as isFavorite
         FROM procedure_details pd
         LEFT JOIN procedure_favorites f ON pd.uuid = f.procedureId
         WHERE pd.uuid = :id
-    """)
+    """,
+    )
     fun getProcedureDetailWithFavorite(id: String): ProcedureDetailWithFavorite?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -40,5 +54,4 @@ interface ProcedureDao {
 
     @Query("SELECT lastUpdated FROM procedures ORDER BY lastUpdated DESC LIMIT 1")
     fun getProceduresLastUpdated(): Long?
-
 }

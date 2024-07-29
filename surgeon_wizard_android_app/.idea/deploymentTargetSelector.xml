@@ -5,7 +5,13 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ProcedureDaoTest">
+      <SelectionState runConfigName="ProcedureDetailBottomSheetTest">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="whenFavoriteTap_thenToggleFavorite()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="whenProcedureLoaded_thenShowsProcedureDetail()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

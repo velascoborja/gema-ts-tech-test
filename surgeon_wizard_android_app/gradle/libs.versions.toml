@@ -14,7 +14,13 @@ hilt = "2.48"
 retrofit = "2.11.0"
 okhttp = "4.11.0"
 room = "2.5.0"
-mockk = "1.12.4"
+mockk = "1.13.12"
+coil = "2.4.0"
+hiltNavigation = "1.0.0"
+navigationCompose = "2.7.0"
+lifecycleCompose = "2.7.0"
+coroutinesTesting = "1.7.3"
+ktlint = "12.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -22,6 +28,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleCompose"}
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -35,6 +42,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation"}
+hilt-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
@@ -44,6 +53,11 @@ room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk"}
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk"}
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose"}
+coroutines-testing = { group = "org.jetbrains.kotlinx", name ="kotlinx-coroutines-test", version.ref = "coroutinesTesting"}
+ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -51,6 +65,7 @@ jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = 
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint"}
 
 [bundles]
 retrofit = ["retrofit", "retrofit-converter-gson", "okhttp", "okhttp-logging-interceptor"]

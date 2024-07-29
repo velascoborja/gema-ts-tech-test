@@ -17,6 +17,5 @@ data class ProcedureEntity(
 
 data class ProcedureWithFavorite(
     @Embedded val procedure: ProcedureEntity,
-    @ColumnInfo(name = "isFavorite") val isFavorite: Boolean
+    @ColumnInfo(name = "isFavorite") val isFavorite: Boolean,
 )
-

@@ -8,13 +8,12 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import retrofit2.Retrofit
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
-
     @Provides
     fun providesBaseUrl(): String {
         return BuildConfig.BASE_URL
@@ -22,17 +21,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(
-        okHttpClientProvider: OkHttpClientProvider
-    ) = okHttpClientProvider.provideSharedOkHttpClient()
+    fun providesOkHttpClient(okHttpClientProvider: OkHttpClientProvider) = okHttpClientProvider.provideSharedOkHttpClient()
 
     @Provides
-    fun providesRetrofitClientProvider(
-        retrofitClientProvider: RetrofitClientProvider
-    ) = retrofitClientProvider.provideRetrofitClient()
+    fun providesRetrofitClientProvider(retrofitClientProvider: RetrofitClientProvider) = retrofitClientProvider.provideRetrofitClient()
 
     @Provides
-    fun providesProcedureApi(
-        retrofit: Retrofit
-    ) = retrofit.create(ProcedureApi::class.java)
+    fun providesProcedureApi(retrofit: Retrofit) = retrofit.create(ProcedureApi::class.java)
 }
