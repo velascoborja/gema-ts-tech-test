@@ -1,12 +1,12 @@
 # Getting to know WizardSurgeon
 
-![App icon](surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp)
+![App icon](surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp | width=100 )
 
 WizardSurgeon is an Android application that provides a comprehensive catalog of magical medical procedures, allowing users to explore, learn, and save their favorite healing techniques.
 
 ## Features
 
-![Procedures list](surgeon_wizard_android_app/screenshots/ProceduresList.png) ![Procedures detail](surgeon_wizard_android_app/screenshots/ProceduresDetail.png) ![Favorites list](surgeon_wizard_android_app/screenshots/ProceduresFavoritesList.png) ![No favorites](surgeon_wizard_android_app/screenshots/NoFavorites.png) ![Error view](surgeon_wizard_android_app/screenshots/ErrorView.png)
+![Procedures list](surgeon_wizard_android_app/screenshots/ProceduresList.png | width=100 ) ![Procedures detail](surgeon_wizard_android_app/screenshots/ProceduresDetail.png | width=100 ) ![Favorites list](surgeon_wizard_android_app/screenshots/ProceduresFavoritesList.png | width=100 ) ![No favorites](surgeon_wizard_android_app/screenshots/NoFavorites.png | width=100 ) ![Error view](surgeon_wizard_android_app/screenshots/ErrorView.png | width=100 )
 
 - **Procedure Library:** Browse an extensive list of magical medical procedures.
 - **Detailed Insights:** Access in-depth information about each procedure, including duration, publication date, phases, and illustrative images.
