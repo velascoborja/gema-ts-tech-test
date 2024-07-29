@@ -1,6 +1,6 @@
 # Getting to know WizardSurgeon
 
-![App icon](surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp | width=100 )
+<img src="surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp" width="200" />
 
 WizardSurgeon is an Android application that provides a comprehensive catalog of magical medical procedures, allowing users to explore, learn, and save their favorite healing techniques.
 
