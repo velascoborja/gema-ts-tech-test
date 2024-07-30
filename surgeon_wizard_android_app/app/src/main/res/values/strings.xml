@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SurgeonWizard</string>
+    <string name="procedure_list_title">Procedures list</string>
+    <string name="favorites_button_content_description">Toggle as favorite</string>
+    <string name="procedures">Procedures list</string>
+    <string name="favorites">Favorites</string>
+
+</resources>
