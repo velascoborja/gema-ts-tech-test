@@ -6,7 +6,12 @@ WizardSurgeon is an Android application that provides a comprehensive catalog of
 
 ## Features
 
-![Procedures list](surgeon_wizard_android_app/screenshots/ProceduresList.png | width=100 ) ![Procedures detail](surgeon_wizard_android_app/screenshots/ProceduresDetail.png | width=100 ) ![Favorites list](surgeon_wizard_android_app/screenshots/ProceduresFavoritesList.png | width=100 ) ![No favorites](surgeon_wizard_android_app/screenshots/NoFavorites.png | width=100 ) ![Error view](surgeon_wizard_android_app/screenshots/ErrorView.png | width=100 )
+<img src="surgeon_wizard_android_app/screenshots/ProceduresList.png" width="200" />
+<img src="surgeon_wizard_android_app/screenshots/ProceduresDetail.png" width="200" />
+<img src="surgeon_wizard_android_app/screenshots/ProceduresFavoritesList.png" width="200" />
+<img src="surgeon_wizard_android_app/screenshots/NoFavorites.png" width="200" />
+<img src="surgeon_wizard_android_app/screenshots/ErrorView.png" width="200" />
+
 
 - **Procedure Library:** Browse an extensive list of magical medical procedures.
 - **Detailed Insights:** Access in-depth information about each procedure, including duration, publication date, phases, and illustrative images.
