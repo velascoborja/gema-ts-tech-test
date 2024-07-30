@@ -2,7 +2,7 @@
 
 <img src="surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp" width="200" />
 
-WizardSurgeon is an Android application that provides a comprehensive catalog of magical medical procedures, allowing users to explore, learn, and save their favorite healing techniques.
+SurgeonWizard is an Android application that provides a comprehensive catalog of magical medical procedures, allowing users to explore, learn, and save their favorite healing techniques.
 
 ## Features
 
@@ -22,7 +22,7 @@ WizardSurgeon is an Android application that provides a comprehensive catalog of
 
 ## Module Structure
 
-WizardSurgeon is built using a multi-module architecture:
+SurgeonWizard is built using a multi-module architecture:
 
 - `app`: Main application module
 - `core`: Contains core utilities and common code
@@ -33,7 +33,7 @@ WizardSurgeon is built using a multi-module architecture:
 
 ## Architecture
 
-WizardSurgeon follows Clean Architecture principles, separated into three main layers:
+SurgeonWizard follows Clean Architecture principles, separated into three main layers:
 
 1. **Presentation Layer**
   - Contains UI-related components (Composables, ViewModels)
@@ -113,10 +113,10 @@ The following testing strategies have been employed:
 
 ## Trade-offs
 
-In developing WizardSurgeon, there have been some trade-off that I have chosen to leave out:
+In developing SurgeonWizard, there have been some trade-off that I have chosen to leave out:
 
 ### Pagination
-I chose not to implement pagination for the procedure lists in the initial version of WizardSurgeon. This decision simplifies the UI implementation and data loading logic, which is suitable for our current relatively small dataset. However, as the number of procedures grows, we may need to implement pagination to improve performance and reduce resource usage, especially on devices with limited capabilities.
+I chose not to implement pagination for the procedure lists in the initial version of SurgeonWizard. This decision simplifies the UI implementation and data loading logic, which is suitable for our current relatively small dataset. However, as the number of procedures grows, we may need to implement pagination to improve performance and reduce resource usage, especially on devices with limited capabilities.
 
 ### Database Structure for Phases
 The phases of procedures are stored as JSON within the procedures table, rather than having their own separate table. This approach simplifies the database structure and read/write operations, avoiding over-engineering for data that is not expected to change frequently. While this may make specific searches or filtering based on phases more challenging, it reduces query complexity and table relationships. 
@@ -128,7 +128,7 @@ For image caching, the app is currently relying solely on Coil's built-in cachin
 
 Thank you for taking the time to read through this documentation and to review the code.
 
-Remember, in the world of magical medical procedures, as in Middle-earth, "Not all those who wander are lost." Your journey through WizardSurgeon may lead to unexpected discoveries!
+Remember, in the world of magical medical procedures, as in Middle-earth, "Not all those who wander are lost." Your journey through SurgeonWizard may lead to unexpected discoveries!
 
 If you encounter any issues while running the app or have any questions about its implementation, please don't hesitate to reach out.
 
