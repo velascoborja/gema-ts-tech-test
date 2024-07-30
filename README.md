@@ -12,11 +12,11 @@ WizardSurgeon is an Android application that provides a comprehensive catalog of
 <img src="surgeon_wizard_android_app/screenshots/NoFavorites.png" width="200" />
 <img src="surgeon_wizard_android_app/screenshots/ErrorView.png" width="200" />
 
-
 - **Procedure Library:** Browse an extensive list of magical medical procedures.
 - **Detailed Insights:** Access in-depth information about each procedure, including duration, publication date, phases, and illustrative images.
 - **Favorite Selection:** Mark procedures as favorites for quick future reference.
 - **Personalized List:** View a curated list of your favorite procedures for easy access.
+- **Offline Support:** It works offline so you don't need a good Internet connection
 
 ## Module Structure
 
@@ -117,8 +117,10 @@ In developing WizardSurgeon, there have been some trade-off that I have chosen t
 I chose not to implement pagination for the procedure lists in the initial version of WizardSurgeon. This decision simplifies the UI implementation and data loading logic, which is suitable for our current relatively small dataset. However, as the number of procedures grows, we may need to implement pagination to improve performance and reduce resource usage, especially on devices with limited capabilities.
 
 ### Database Structure for Phases
-The phases of procedures are stored as JSON within the procedures table, rather than having their own separate table. This approach simplifies the database structure and read/write operations, avoiding over-engineering for data that is not expected to change frequently. While this may make specific searches or filtering based on phases more challenging, it reduces query complexity and table relationships. If phases require frequent or independent updates in the future, we may need to revisit this decision.
+The phases of procedures are stored as JSON within the procedures table, rather than having their own separate table. This approach simplifies the database structure and read/write operations, avoiding over-engineering for data that is not expected to change frequently. While this may make specific searches or filtering based on phases more challenging, it reduces query complexity and table relationships. 
 
+### Image Caching
+For image caching, the app is currently relying solely on Coil's built-in caching mechanism without implementing additional manual caching. This simplifies our implementation and reduces code complexity. However, in scenarios where internet connectivity is lost, images that haven't been previously downloaded and cached by Coil may not be available. 
 
 ## Thank You!
 
