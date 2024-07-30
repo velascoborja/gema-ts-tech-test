@@ -30,7 +30,7 @@ class ProcedureDetailRobot(
     private lateinit var viewModel: ProcedureDetailViewModel
     private lateinit var snackbarHostState: SnackbarHostState
 
-    fun initializeViewModel() {
+    fun initializeDependencies() {
         viewModel = mockk<ProcedureDetailViewModel>(relaxed = true)
         snackbarHostState = SnackbarHostState()
     }

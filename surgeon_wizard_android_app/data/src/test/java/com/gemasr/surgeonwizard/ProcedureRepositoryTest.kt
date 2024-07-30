@@ -2,6 +2,7 @@ package com.gemasr.surgeonwizard
 
 import com.gemasr.surgeonwizard.data.local.ProcedureLocalDataSource
 import com.gemasr.surgeonwizard.data.remote.ProcedureRemoteDataSource
+import com.gemasr.surgeonwizard.domain.procedure.error.ProcedureError
 import com.gemasr.surgeonwizard.util.ProceduresFabricator
 import com.google.gson.Gson
 import io.mockk.Runs
@@ -123,8 +124,8 @@ class ProcedureRepositoryTest {
 
         // Then
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is Exception)
-        assertEquals("Test exception", result.exceptionOrNull()?.message)
+        val exception = result.exceptionOrNull()
+        assertTrue(exception is ProcedureError.UnidentifiedError)
     }
 
     @Test
@@ -200,8 +201,8 @@ class ProcedureRepositoryTest {
 
         // Then
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is Exception)
-        assertEquals("Test exception", result.exceptionOrNull()?.message)
+        val exception = result.exceptionOrNull()
+        assertTrue(exception is ProcedureError.UnidentifiedError)
     }
 
     @Test
@@ -229,7 +230,7 @@ class ProcedureRepositoryTest {
 
         // Then
         assertTrue(result.isFailure)
-        assertTrue(result.exceptionOrNull() is Exception)
-        assertEquals("Test exception", result.exceptionOrNull()?.message)
+        val exception = result.exceptionOrNull()
+        assertTrue(exception is ProcedureError.UnidentifiedError)
     }
 }

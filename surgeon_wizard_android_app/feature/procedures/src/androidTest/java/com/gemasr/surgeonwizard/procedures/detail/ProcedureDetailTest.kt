@@ -17,7 +17,7 @@ class ProcedureDetailTest {
 
     @Before
     fun setup() {
-        robot.initializeViewModel()
+        robot.initializeDependencies()
     }
 
     @Test
