@@ -1,4 +1,4 @@
-# Getting to know WizardSurgeon
+# Getting to know SurgeonWizard
 
 <img src="surgeon_wizard_android_app/screenshots/SurgeonWizardIcon.webp" width="200" />
 
