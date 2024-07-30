@@ -59,7 +59,7 @@ WizardSurgeon follows Clean Architecture principles, separated into three main l
 
 - **Presentation → Domain**: The Presentation Layer depends on the Domain Layer, using Repositories (in this case IProcedureRepository) to perform operations and retrieve data. It doesn't know about the Data Layer implementation.
 
-- **Domain ← → Data**: The Domain Layer defines repository interfaces, which are implemented by the Data Layer. This allows the Domain Layer to remain independent of data source implementations.
+- **Domain ← Data**: The Domain Layer defines repository interfaces, which are implemented by the Data Layer. This allows the Domain Layer to remain independent of data source implementations.
 
 - **Presentation ↛ Data**: There's no direct communication between the Presentation and Data layers, maintaining a clear separation of concerns.
 
